@@ -17,6 +17,19 @@ const rootNote = (state = initialState, action) => {
     return {
       notes: state.notes.filter((note) => note.title !== action.title),
     };
+  } else if (action.type === "EDIT_TODO") {
+    return {
+      notes: state.notes.map((note) => {
+        if (note.title === action.title) {
+          return {
+            title: action.title,
+            description: action.description,
+          };
+        } else {
+          return note;
+        }
+      }),
+    };
   } else {
     return state;
   }

@@ -6,9 +6,17 @@ export const AddTodo = (title, description) => {
   };
 };
 
-// export const DeleteTodo = () => {
-//   return {
-//     type: "DELETE_TODO",
-//     payload: todo,
-//   };
-// };
+export const DeleteTodo = (title) => {
+  return {
+    type: "DELETE_TODO",
+    title: title,
+  };
+};
+
+export const EditTodo = (title, description) => {
+  return {
+    type: "EDIT_TODO",
+    title: title,
+    description: description,
+  };
+};

@@ -1,18 +1,18 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddDo from "./Components/AddDo";
 import ShowDo from "./Components/ShowDo";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen">
+    <div className="min-h-screen">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<AddDo />} />
           <Route path="/add" element={<ShowDo />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </div>
   );
 };
 
