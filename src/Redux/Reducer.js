@@ -15,19 +15,20 @@ const rootNote = (state = initialState, action) => {
     };
   } else if (action.type === "DELETE_TODO") {
     return {
-      notes: state.notes.filter((note) => note.title !== action.title),
+      notes: state.notes.filter((note, index) => {
+        return index != action.id;
+      }),
     };
   } else if (action.type === "EDIT_TODO") {
     return {
-      notes: state.notes.map((note) => {
-        if (note.title === action.title) {
+      notes: state.notes.map((note, index) => {
+        if (index === action.id) {
           return {
             title: action.title,
             description: action.description,
           };
-        } else {
-          return note;
         }
+        return note;
       }),
     };
   } else {

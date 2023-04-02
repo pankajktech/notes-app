@@ -6,16 +6,17 @@ export const AddTodo = (title, description) => {
   };
 };
 
-export const DeleteTodo = (title) => {
+export const DeleteTodo = (id) => {
   return {
     type: "DELETE_TODO",
-    title: title,
+    id: id,
   };
 };
 
-export const EditTodo = (title, description) => {
+export const EditTodo = (id, title, description) => {
   return {
     type: "EDIT_TODO",
+    id: id,
     title: title,
     description: description,
   };
