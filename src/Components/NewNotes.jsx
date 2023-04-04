@@ -31,7 +31,7 @@ const NewNotes = () => {
   };
 
   return (
-    <div className="min-h-[94vh] bg-slate-900 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-slate-900 flex flex-col justify-center items-center">
       {isNoteAdded && (
         <div className="alert alert-success shadow-lg w-72 z-20 absolute right-20 md:right-10 top-20">
           <div>

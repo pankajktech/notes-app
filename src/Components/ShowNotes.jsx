@@ -39,7 +39,7 @@ const ShowNotes = () => {
   };
 
   return (
-    <div className="bg-slate-900 min-h-[94vh] p-2 lg:p-10">
+    <div className="bg-slate-900 min-h-screen p-2 lg:p-10">
       <button
         onClick={() => navigate("/")}
         className="btn btn-outline btn-accent flex p-2 justify-center items-center mx-auto my-5"
