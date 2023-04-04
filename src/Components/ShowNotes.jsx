@@ -39,7 +39,7 @@ const ShowNotes = () => {
   };
 
   return (
-    <div className="bg-slate-900 min-h-screen p-10">
+    <div className="bg-slate-900 min-h-[94vh] p-2 lg:p-10">
       <button
         onClick={() => navigate("/")}
         className="btn btn-outline btn-accent flex p-2 justify-center items-center mx-auto my-5"
@@ -59,7 +59,7 @@ const ShowNotes = () => {
         {allNotes.map((NOTE, index) => (
           <div
             key={index}
-            className="flex justify-between min-h-[200px] w-[500px] bg-slate-800 text-white p-5 m-5 shadow-sm shadow-slate-100 rounded-md"
+            className="flex justify-between min-h-[200px] w-[90%] lg:w-[500px] bg-slate-800 text-white p-5 m-5 shadow-sm shadow-slate-100 rounded-md"
           >
             {editIndex === index ? (
               <div className="px-3">
@@ -104,7 +104,7 @@ const ShowNotes = () => {
               </button>
               <button onClick={() => handleDelete(index)} className="">
                 {isNoteDeleted && (
-                  <div className="alert alert-error shadow-lg w-72 z-20 absolute right-10 top-20">
+                  <div className="alert alert-error shadow-lg w-72 z-20 absolute right-20 md:right-10 top-20">
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

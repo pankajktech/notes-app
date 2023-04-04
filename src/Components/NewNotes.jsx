@@ -31,9 +31,9 @@ const NewNotes = () => {
   };
 
   return (
-    <div className="min-h-screen relative bg-slate-900 bg-cover bg-no-repeat bg-center flex flex-col justify-center items-center">
+    <div className="min-h-[94vh] bg-slate-900 flex flex-col justify-center items-center">
       {isNoteAdded && (
-        <div className="alert alert-success shadow-lg w-72 z-20 absolute right-10 top-20">
+        <div className="alert alert-success shadow-lg w-72 z-20 absolute right-20 md:right-10 top-20">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ const NewNotes = () => {
         My Notes
         <AiOutlineArrowRight className="ml-2" />
       </button>
-      <div className=" w-1/3 bg-slate-800 flex justify-center flex-col  p-10 rounded-md drop-shadow-2xl ">
+      <div className=" w-[90%] lg:w-1/3 bg-slate-800 flex justify-center flex-col  p-10 rounded-md drop-shadow-2xl ">
         <h1 className="text-xl border-b border-slate-100/25 mb-5 text-center w-full p-3">
           Add A New Note
         </h1>
