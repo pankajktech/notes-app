@@ -1,21 +1,21 @@
-export const AddTodo = (title, description) => {
+export const AddNOTE = (title, description) => {
   return {
-    type: "ADD_TODO",
+    type: "ADD_NOTE",
     title: title,
     description: description,
   };
 };
 
-export const DeleteTodo = (id) => {
+export const DeleteNOTE = (id) => {
   return {
-    type: "DELETE_TODO",
+    type: "DELETE_NOTE",
     id: id,
   };
 };
 
-export const EditTodo = (id, title, description) => {
+export const EditNOTE = (id, title, description) => {
   return {
-    type: "EDIT_TODO",
+    type: "EDIT_NOTE",
     id: id,
     title: title,
     description: description,

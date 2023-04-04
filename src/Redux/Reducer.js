@@ -3,7 +3,7 @@ const initialState = {
 };
 
 const rootNote = (state = initialState, action) => {
-  if (action.type === "ADD_TODO") {
+  if (action.type === "ADD_NOTE") {
     return {
       notes: [
         ...state.notes,
@@ -13,13 +13,13 @@ const rootNote = (state = initialState, action) => {
         },
       ],
     };
-  } else if (action.type === "DELETE_TODO") {
+  } else if (action.type === "DELETE_NOTE") {
     return {
       notes: state.notes.filter((note, index) => {
         return index != action.id;
       }),
     };
-  } else if (action.type === "EDIT_TODO") {
+  } else if (action.type === "EDIT_NOTE") {
     return {
       notes: state.notes.map((note, index) => {
         if (index === action.id) {
