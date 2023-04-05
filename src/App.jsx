@@ -5,14 +5,12 @@ import ShowNotes from "./Components/ShowNotes";
 
 const App = () => {
   return (
-    <div className="min-h-screen">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<NewNotes />} />
-          <Route path="/add" element={<ShowNotes />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<NewNotes />} />
+        <Route path="/add" element={<ShowNotes />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

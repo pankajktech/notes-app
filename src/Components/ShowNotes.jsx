@@ -6,6 +6,7 @@ import { DeleteNOTE, EditNOTE } from "../Redux/Action";
 
 import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
+import { NoteDeleted } from "./Message";
 
 const ShowNotes = () => {
   const allNotes = useSelector((state) => state.notes);
@@ -72,7 +73,7 @@ const ShowNotes = () => {
                 <textarea
                   value={editDescription}
                   onChange={(e) => setEditDescription(e.target.value)}
-                  className="input w-full my-2 h-32"
+                  className="input w-full my-2 h-52"
                 ></textarea>
                 <div className="flex justify-end mt-3">
                   <button
@@ -94,7 +95,9 @@ const ShowNotes = () => {
                 <h1 className="text-2xl text-teal-400 font-semibold">
                   {NOTE.title}
                 </h1>
-                <p className="text-md mt-2 ">{NOTE.description}</p>
+                <p className="text-md mt-2 overflow-x whitespace-pre-wrap break-words ">
+                  {NOTE.description}
+                </p>
               </div>
             )}
 
@@ -103,26 +106,7 @@ const ShowNotes = () => {
                 <FaEdit className="text-2xl ml-4 my-4 hover:text-teal-500" />
               </button>
               <button onClick={() => handleDelete(index)} className="">
-                {isNoteDeleted && (
-                  <div className="alert alert-error shadow-lg w-72 z-20 absolute right-20 md:right-10 top-20">
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="stroke-current flex-shrink-0 h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      <span>Note Deleted Successfully!</span>
-                    </div>
-                  </div>
-                )}
+                {isNoteDeleted && <NoteDeleted />}
                 <AiFillDelete className="text-2xl ml-4 my-4 hover:text-red-500" />
               </button>
             </div>
