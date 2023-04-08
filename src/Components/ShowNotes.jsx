@@ -6,7 +6,7 @@ import { DeleteNOTE, EditNOTE } from "../Redux/Action";
 
 import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
-import { NoteDeleted } from "./Message";
+import { NoteDeleted, NoteEdited } from "./Message";
 
 const ShowNotes = () => {
   const allNotes = useSelector((state) => state.notes);
@@ -16,6 +16,7 @@ const ShowNotes = () => {
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [isNoteDeleted, setIsNoteDeleted] = useState(false);
+  const [isNoteEdited, setIsNoteEdited] = useState(false);
 
   const handleDelete = (index) => {
     dispatch(DeleteNOTE(index));
@@ -37,10 +38,20 @@ const ShowNotes = () => {
 
     setEditTitle("");
     setEditDescription("");
+    setIsNoteEdited(true);
+
+    setTimeout(
+      () => {
+        setIsNoteEdited(false);
+      },
+
+      1000
+    );
   };
 
   return (
     <div className="bg-slate-900 min-h-screen p-2 lg:p-10">
+      {isNoteEdited && <NoteEdited />}
       <button
         onClick={() => navigate("/")}
         className="btn btn-outline btn-accent flex p-2 justify-center items-center mx-auto my-5"
