@@ -32,16 +32,16 @@ const NewNotes = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col justify-center items-center">
+    <div className="min-h-screen backdrop-blur-sm flex flex-col justify-center items-center">
       {isNoteAdded && <NoteAdded />}
       <button
         onClick={() => navigate("/add")}
-        className="mx-auto px-3 absolute w-42 top-10 btn btn-outline btn-info mb-5"
+        className="mx-auto px-3 absolute w-52 top-20 btn btn-active btn-info mb-2"
       >
         My Notes
         <AiOutlineArrowRight className="ml-2" />
       </button>
-      <div className=" w-[90%] lg:w-1/3 bg-slate-800 flex justify-center flex-col p-3  md:p-10 rounded-md drop-shadow-2xl ">
+      <div className=" w-[90%] lg:w-1/3 bg-slate-800 backdrop-blur-sm bg-opacity-50 flex justify-center flex-col p-3  md:p-10 rounded-md drop-shadow-2xl ">
         <h1 className="text-xl border-b border-slate-100/25 mb-5 text-center w-full p-2">
           Add A New Note
         </h1>

@@ -50,11 +50,11 @@ const ShowNotes = () => {
   };
 
   return (
-    <div className="bg-slate-900 min-h-screen p-2 lg:p-10">
+    <div className=" backdrop-blur-sm min-h-screen p-2 lg:p-10">
       {isNoteEdited && <NoteEdited />}
       <button
         onClick={() => navigate("/")}
-        className="btn btn-outline btn-accent flex p-2 justify-center items-center mx-auto my-5"
+        className="btn btn-accent btn-error flex p-2 w-52 justify-center items-center mx-auto my-5"
       >
         <AiOutlineArrowLeft className="mr-2 " />
         Go To Add Note
@@ -74,7 +74,7 @@ const ShowNotes = () => {
             className="flex justify-between min-h-[200px] w-[90%] lg:w-[500px] bg-slate-800 text-white p-5 m-5 shadow-sm shadow-slate-100 rounded-md"
           >
             {editIndex === index ? (
-              <div className="px-3">
+              <div className="px-2">
                 <input
                   type="text"
                   value={editTitle}
