@@ -2,10 +2,20 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NewNotes from "./Components/NewNotes";
 import ShowNotes from "./Components/ShowNotes";
+import img from "./Images/BgImg.jpg";
 
 const App = () => {
   return (
-    <div className="bg-[url(https://image.lexica.art/full_jpg/b7e84149-721a-4869-88cb-e7fbe7f283b6)] bg-cover bg-center bg-no-repeat backdrop-blur-sm bg-opacity-50">
+    <div
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+      }}
+      className=" bg-cover bg-center bg-no-repeat "
+    >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NewNotes />} />
