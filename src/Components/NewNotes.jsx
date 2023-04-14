@@ -7,6 +7,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
+import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { NoteAdded } from "./Message";
 
@@ -54,7 +55,7 @@ const NewNotes = () => {
         My All Notes
         <AiOutlineArrowRight className="ml-2" />
       </button>
-      <div className=" w-[90%] lg:w-1/3 bg-slate-800 flex justify-center flex-col p-3  md:p-10 rounded-lg drop-shadow-2xl ">
+      <div className=" w-[100%] lg:w-1/3 bg-slate-800 flex justify-center flex-col p-3  md:p-10 rounded-lg drop-shadow-2xl ">
         <h1 className="text-xl text-slate-200 border-b border-slate-100/25 mb-5 text-center w-full p-2">
           Add A New Note
         </h1>
@@ -71,36 +72,31 @@ const NewNotes = () => {
             type="text"
             placeholder="Enter The Description"
             className="textarea textarea-secondary textarea-ghost w-full h-60 my-5"
-            value={description}
-            onChange={(e) => setDescription(e.target.value || { transcript })}
+            value={description || transcript}
+            onChange={(e) => setDescription(e.target.value)}
+            onBlur={stopListenings}
             required
           />
           <button type="submit" className="btn btn-secondary  w-full text-xl">
             Add Note
           </button>
         </form>
-      </div>
-      <div className="flex justify-center items-center">
-        <button
-          onClick={startListenings}
-          className="btn btn-active btn-info mt-5 mx-3"
-        >
-          Start
-        </button>
-        <button
-          onClick={stopListenings}
-          className="btn btn-active btn-info mt-5 mx-3"
-        >
-          Stop
-        </button>
-
-        <button
-          onClick={() => setDescription(transcript)}
-          className="btn btn-active btn-info mt-5 mx-3"
-        >
-          Add
-        </button>
-        <div className="text-white mt-5 mx-3 text-lg">{transcript}</div>
+        <div className="flex justify-center items-center">
+          <button
+            onClick={startListenings}
+            className="btn btn-active btn-info mt-5 mx-3"
+          >
+            <FaMicrophone className="mr-2" />
+            Start
+          </button>
+          <button
+            onClick={stopListenings}
+            className="btn btn-active btn-info mt-5 mx-3"
+          >
+            <FaMicrophoneSlash className="mr-2" />
+            Stop
+          </button>
+        </div>
       </div>
     </div>
   );
