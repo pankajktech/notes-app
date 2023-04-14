@@ -22,7 +22,7 @@ const NewNotes = () => {
     SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
   const stopListenings = () => SpeechRecognition.stopListening();
 
-  const { transcript, browserSupportsSpeechRecognition } =
+  const { transcript, listening, browserSupportsSpeechRecognition } =
     useSpeechRecognition();
 
   if (!browserSupportsSpeechRecognition) {
@@ -55,7 +55,7 @@ const NewNotes = () => {
         My All Notes
         <AiOutlineArrowRight className="ml-2" />
       </button>
-      <div className=" w-[100%] lg:w-1/3 bg-slate-800 flex justify-center flex-col p-3  md:p-10 rounded-lg drop-shadow-2xl ">
+      <div className=" w-[90%] lg:w-1/3 bg-slate-800 flex justify-center flex-col p-3  md:p-10 rounded-lg drop-shadow-2xl ">
         <h1 className="text-xl text-slate-200 border-b border-slate-100/25 mb-5 text-center w-full p-2">
           Add A New Note
         </h1>
@@ -86,14 +86,19 @@ const NewNotes = () => {
             onClick={startListenings}
             className="btn btn-active btn-info mt-5 mx-3"
           >
-            <FaMicrophone className="mr-2" />
+            {
+              <FaMicrophone
+                className="mr-2 text-xl"
+                style={{ color: listening ? "red" : "black" }}
+              />
+            }
             Start
           </button>
           <button
             onClick={stopListenings}
-            className="btn btn-active btn-info mt-5 mx-3"
+            className="btn btn-active btn-primary mt-5 mx-3"
           >
-            <FaMicrophoneSlash className="mr-2" />
+            <FaMicrophoneSlash className="mr-2 text-xl" />
             Stop
           </button>
         </div>
