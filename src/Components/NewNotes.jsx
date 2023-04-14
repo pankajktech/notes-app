@@ -73,7 +73,7 @@ const NewNotes = () => {
             placeholder="Enter The Description"
             className="textarea textarea-secondary textarea-ghost w-full h-60 my-5"
             value={description || transcript}
-            onChange={(e) => setDescription({ transcript } || e.target.value)}
+            onChange={(e) => setDescription(transcript || e.target.value)}
             onBlur={stopListenings}
             required
           />
@@ -101,14 +101,6 @@ const NewNotes = () => {
             <FaMicrophoneSlash className="mr-2 text-xl" />
             Stop
           </button>
-          {transcript && (
-            <button
-              onClick={() => setDescription({ transcript })}
-              className="btn btn-active btn-success mt-5 mx-3"
-            >
-              Use
-            </button>
-          )}
         </div>
       </div>
     </div>
