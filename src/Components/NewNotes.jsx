@@ -72,7 +72,7 @@ const NewNotes = () => {
             type="text"
             placeholder="Enter The Description"
             className="textarea textarea-secondary textarea-ghost w-full h-60 my-5"
-            value={description}
+            value={description || transcript}
             onChange={(e) => setDescription(transcript || e.target.value)}
             onBlur={stopListenings}
             required
