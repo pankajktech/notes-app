@@ -9,8 +9,12 @@ const App = () => {
     <div
       style={{
         backgroundImage: `url(${img})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
       }}
-      className="bg-cover bg-center bg-no-repeat bg-fixed"
+      className=" bg-cover bg-center bg-no-repeat"
     >
       <BrowserRouter>
         <Routes>

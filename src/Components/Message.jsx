@@ -1,6 +1,6 @@
 export const NoteAdded = () => {
   return (
-    <div className="alert alert-success shadow-lg md:w-72 z-20 absolute right-20 md:right-10 top-20">
+    <div className="alert alert-success shadow-lg w-72 z-20 absolute right-20 md:right-10 top-20">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ export const NoteAdded = () => {
 
 export const NoteDeleted = () => {
   return (
-    <div className="alert alert-error shadow-lg md:w-72 z-20 absolute right-20 md:right-10 top-10">
+    <div className="alert alert-error shadow-lg w-72 z-20 absolute right-20 md:right-10 top-20">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export const NoteDeleted = () => {
 
 export const NoteEdited = () => {
   return (
-    <div className="alert alert-warning shadow-lg md:w-72 z-20 absolute right-20 md:right-10 top-10">
+    <div className="alert alert-warning shadow-lg w-72 z-20 absolute right-20 md:right-10 top-20">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

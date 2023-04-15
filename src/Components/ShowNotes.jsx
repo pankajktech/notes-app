@@ -16,7 +16,7 @@ const ShowNotes = () => {
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [isNoteDeleted, setIsNoteDeleted] = useState(false);
-  const [isNoteEdited, setIsNoteEdited] = useState(false);
+  const [isNoteEdited, setisNoteEdited] = useState(false);
 
   const handleDelete = (index) => {
     dispatch(DeleteNOTE(index));
@@ -38,33 +38,30 @@ const ShowNotes = () => {
 
     setEditTitle("");
     setEditDescription("");
-    setIsNoteEdited(true);
-
-    setTimeout(
-      () => {
-        setIsNoteEdited(false);
-      },
-
-      1000
-    );
+    setisNoteEdited(true);
+    setTimeout(() => {
+      setisNoteEdited(false);
+    }, 1000);
   };
 
   return (
-    <div className=" backdrop-blur-md min-h-screen p-2 lg:p-10">
-      {isNoteEdited && <NoteEdited />}
+    <div className="backdrop-blur-xl min-h-screen p-2 lg:p-10">
       {isNoteDeleted && <NoteDeleted />}
-      <div className="flex items-center justify-center">
+      {isNoteEdited && <NoteEdited />}
+
+      {}
+      <div className="flex justify-center items-center">
         <button
           onClick={() => navigate("/")}
-          className="btn btn-accent btn-error p-2 w-52 my-5 mx-3"
+          className="btn btn-active btn-info my-5"
         >
           <AiOutlineArrowLeft className="mr-2 " />
           Go To Add Note
         </button>
 
-        <h1 className="btn text-white my-5 mx-3">
+        <h1 className="btn btn-active text-center my-5 mx-2">
           {allNotes.length === 0 && (
-            <span className="text-red-500 font-mono">No Notes Found</span>
+            <span className="text-red-500 ">No Notes Found</span>
           )}
           {allNotes.length > 0 && <span className="">My Notes</span>}
         </h1>
@@ -74,10 +71,10 @@ const ShowNotes = () => {
         {allNotes.map((NOTE, index) => (
           <div
             key={index}
-            className="flex justify-between min-h-[200px] w-[90%] lg:w-[500px] bg-slate-800 text-white p-5 m-5 drop-shadow-2xl rounded-sm"
+            className="flex justify-between min-h-[200px] w-[90%] lg:w-[500px] bg-slate-800 text-white p-5 m-5 drop-shadow-2xl rounded-md"
           >
             {editIndex === index ? (
-              <div className="px-2">
+              <div className="px-3">
                 <input
                   type="text"
                   value={editTitle}
