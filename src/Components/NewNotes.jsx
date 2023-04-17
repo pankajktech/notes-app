@@ -49,7 +49,7 @@ const NewNotes = () => {
           <input
             type="text"
             placeholder="Enter The Title"
-            className="input input-bordered input-info w-full my-5"
+            className="input input-info w-full my-5"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -57,7 +57,7 @@ const NewNotes = () => {
           <textarea
             type="text"
             placeholder="Enter The Description"
-            className="textarea textarea-bordered textarea-info w-full h-60 my-5"
+            className="textarea textarea-info w-full h-60 my-5"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
