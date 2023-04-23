@@ -7,6 +7,7 @@ import { DeleteNOTE, EditNOTE } from "../Redux/Action";
 import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { NoteDeleted, NoteEdited } from "./Message";
+import { Input, Textarea, Button } from "@material-tailwind/react";
 
 const ShowNotes = () => {
   const allNotes = useSelector((state) => state.notes);
@@ -45,47 +46,64 @@ const ShowNotes = () => {
   };
 
   return (
-    <div className="backdrop-blur-xl min-h-screen p-2 lg:p-10">
+    <div className="min-h-screen p-2 lg:p-10">
       {isNoteDeleted && <NoteDeleted />}
       {isNoteEdited && <NoteEdited />}
 
-      {}
       <div className="flex justify-center items-center">
-        <button
+        <Button
           onClick={() => navigate("/")}
-          className="btn btn-active btn-info my-5"
+          buttonType="link"
+          size="lg"
+          variant="gradient"
+          color="light-blue"
+          className="group relative flex items-center gap-3 overflow-hidden pl-[72px] mx-3"
         >
-          <AiOutlineArrowLeft className="mr-2 " />
-          Go To Add Note
-        </button>
+          <span className="absolute left-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
+            <AiOutlineArrowLeft className="text-white" />
+          </span>
+          Go Back to Add Notes
+        </Button>
 
-        <h1 className="btn btn-active text-center my-5 mx-2">
-          {allNotes.length === 0 && (
-            <span className="text-red-500 ">No Notes Found</span>
-          )}
-          {allNotes.length > 0 && <span className="">My Notes</span>}
-        </h1>
+        <Button
+          onClick={() => navigate("/add")}
+          buttonType="link"
+          size="lg"
+          variant="gradient"
+          color="deep-orange"
+          className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
+        >
+          Total Notes
+          <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
+            {allNotes.length}
+          </span>
+        </Button>
       </div>
 
       <div className="flex flex-wrap">
         {allNotes.map((NOTE, index) => (
           <div
             key={index}
-            className="flex justify-between min-h-[200px] w-[90%] lg:w-[500px] bg-slate-800 text-white p-5 m-5 drop-shadow-2xl rounded-md"
+            className="flex justify-between min-h-[200px] w-[90%] lg:w-[500px] bg-black text-white p-5 m-5 drop-shadow-2xl rounded-md"
           >
             {editIndex === index ? (
               <div className="px-3">
-                <input
-                  type="text"
-                  value={editTitle}
-                  onChange={(e) => setEditTitle(e.target.value)}
-                  className="input w-full my-2"
-                />
-                <textarea
-                  value={editDescription}
-                  onChange={(e) => setEditDescription(e.target.value)}
-                  className="input w-full my-2 h-52"
-                ></textarea>
+                <div className="flex flex-col w-72 gap-6 text-white">
+                  <Input
+                    variant="static"
+                    value={editTitle}
+                    onChange={(e) => setEditTitle(e.target.value)}
+                    className="focus:text-white text-white"
+                  />
+                </div>
+                <div className="flex flex-col w-72 my-6 text-white">
+                  <Textarea
+                    variant="static"
+                    value={editDescription}
+                    onChange={(e) => setEditDescription(e.target.value)}
+                    className="focus:text-white text-white"
+                  />
+                </div>
                 <div className="flex justify-end mt-3">
                   <button
                     onClick={handleSave}

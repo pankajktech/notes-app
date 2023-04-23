@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NewNotes from "./Components/NewNotes";
 import ShowNotes from "./Components/ShowNotes";
-import img from "./Images/BgImg.jpg";
+import img from "./Images/herobg.jpg";
 
 const App = () => {
   return (

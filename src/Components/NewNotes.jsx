@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { NoteAdded } from "./Message";
+import { Input, Textarea, Button } from "@material-tailwind/react";
 
 const NewNotes = () => {
   const [title, setTitle] = useState("");
@@ -32,42 +33,55 @@ const NewNotes = () => {
   };
 
   return (
-    <div className="min-h-screen backdrop-blur-xl flex flex-col justify-center items-center">
+    <div className="min-h-screen flex flex-col justify-center items-center">
       {isNoteAdded && <NoteAdded />}
-      <button
+      <Button
         onClick={() => navigate("/add")}
-        className="mx-auto px-3 absolute w-40 top-10 btn btn-active btn-info mb-5"
+        buttonType="link"
+        size="lg"
+        variant="gradient"
+        color="amber"
+        className="group relative bottom-32 flex items-center overflow-hidden pr-[72px]"
       >
-        My Notes
-        <AiOutlineArrowRight className="ml-2" />
-      </button>
-      <div className=" w-[90%] lg:w-1/3 bg-slate-800 flex justify-center flex-col p-3  md:p-10 rounded-md drop-shadow-2xl ">
-        <h1 className="text-xl border-b border-slate-100/25 mb-5 text-center w-full p-2">
+        Go to Notes
+        <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
+          <AiOutlineArrowRight className="text-white" />
+        </span>
+      </Button>
+      <div className=" w-[90%] lg:w-[450px] bg-black flex justify-center flex-col p-3  md:p-10 rounded-md  ">
+        <h1 className="text-xl text-white mb-5 text-center w-full">
           Add A New Note
         </h1>
         <form onSubmit={AddNotes} className="flex flex-col">
-          <input
-            type="text"
-            placeholder="Enter The Title"
-            className="input input-info w-full my-5"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-          <textarea
-            type="text"
-            placeholder="Enter The Description"
-            className="textarea textarea-info w-full h-60 my-5"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-          <button
+          <div className="w-full my-5">
+            <Input
+              label="Enter Title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="focus:text-white text-white"
+              required
+            />
+          </div>
+          <div className="w-full my-5">
+            <Textarea
+              label="Enter Description"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="focus:text-white text-white"
+              required
+            />
+          </div>
+          <Button
+            color="blue"
+            buttonType="filled"
+            size="regular"
+            className="mt-5"
             type="submit"
-            className="btn btn-active btn-info w-full text-xl"
           >
             Add Note
-          </button>
+          </Button>
         </form>
       </div>
     </div>
