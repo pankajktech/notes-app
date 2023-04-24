@@ -50,19 +50,19 @@ const ShowNotes = () => {
       {isNoteDeleted && <NoteDeleted />}
       {isNoteEdited && <NoteEdited />}
 
-      <div className="flex justify-center items-center">
+      <div className="flex flex-col md:flex-row justify-center items-center">
         <Button
           onClick={() => navigate("/")}
           buttonType="link"
           size="lg"
           variant="gradient"
           color="light-blue"
-          className="group relative flex items-center gap-3 overflow-hidden pl-[72px] mx-3"
+          className=" my-3 group relative flex items-center gap-3 overflow-hidden pl-[72px] mx-3"
         >
           <span className="absolute left-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
             <AiOutlineArrowLeft className="text-white" />
           </span>
-          Go Back to Add Notes
+          Add Notes
         </Button>
 
         <Button
@@ -71,7 +71,7 @@ const ShowNotes = () => {
           size="lg"
           variant="gradient"
           color="deep-orange"
-          className="group relative flex items-center gap-3 overflow-hidden pr-[72px]"
+          className=" my-3 group relative flex items-center gap-3 overflow-hidden pr-[72px]"
         >
           Total Notes
           <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">

@@ -4,6 +4,7 @@ import { AddNOTE } from "../Redux/Action";
 import { useNavigate } from "react-router-dom";
 
 import { AiOutlineArrowRight } from "react-icons/ai";
+import img from "../Images/herobg.jpg";
 import { NoteAdded } from "./Message";
 import { Input, Textarea, Button } from "@material-tailwind/react";
 
@@ -33,11 +34,18 @@ const NewNotes = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center">
+    <div
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+      className="min-h-screen flex flex-col justify-center items-center"
+    >
       {isNoteAdded && <NoteAdded />}
       <Button
         onClick={() => navigate("/add")}
-        buttonType="link"
         size="lg"
         variant="gradient"
         color="amber"
@@ -50,7 +58,7 @@ const NewNotes = () => {
       </Button>
       <div className=" w-[90%] lg:w-[450px] bg-black flex justify-center flex-col p-3  md:p-10 rounded-md  ">
         <h1 className="text-xl text-white mb-5 text-center w-full">
-          Add A New Note
+          Add A Note
         </h1>
         <form onSubmit={AddNotes} className="flex flex-col">
           <div className="w-full my-5">
@@ -73,13 +81,7 @@ const NewNotes = () => {
               required
             />
           </div>
-          <Button
-            color="blue"
-            buttonType="filled"
-            size="regular"
-            className="mt-5"
-            type="submit"
-          >
+          <Button color="blue" className="mt-5" type="submit">
             Add Note
           </Button>
         </form>
