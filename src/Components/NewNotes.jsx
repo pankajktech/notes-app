@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AddNOTE } from "../Redux/Action";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { NoteAdded } from "./Message";
@@ -33,7 +34,7 @@ const NewNotes = () => {
   };
 
   return (
-    <div className="min-h-screen bg-blue-gray-50 flex flex-col justify-center items-center">
+    <motion.div className="min-h-screen bg-blue-gray-100 flex flex-col justify-center items-center">
       {isNoteAdded && <NoteAdded />}
       <Button
         onClick={() => navigate("/add")}
@@ -47,13 +48,13 @@ const NewNotes = () => {
           <AiOutlineArrowRight className="text-white" />
         </span>
       </Button>
-      <Card
-        shadow="true"
-        className=" w-[90%] lg:w-[450px] flex justify-center flex-col p-3  md:p-10 rounded-md"
+      <motion.Card
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className=" w-[90%] lg:w-[450px] bg-white drop-shadow-xl shadow-xl flex justify-center flex-col p-3  md:p-10 rounded-md"
       >
-        <h1 className="text-xl text-white mb-5 text-center w-full">
-          Add A Note
-        </h1>
+        <h1 className="text-xl mb-5 text-center w-full">Add A Note</h1>
         <form onSubmit={AddNotes} className="flex flex-col">
           <div className="w-full my-5">
             <Input
@@ -61,7 +62,6 @@ const NewNotes = () => {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="focus:text-white text-white"
               required
             />
           </div>
@@ -70,9 +70,7 @@ const NewNotes = () => {
               label="Enter Description"
               type="text"
               value={description}
-              size="lg"
               onChange={(e) => setDescription(e.target.value)}
-              className="focus:text-white text-white"
               required
             />
           </div>
@@ -80,8 +78,8 @@ const NewNotes = () => {
             Add Note
           </Button>
         </form>
-      </Card>
-    </div>
+      </motion.Card>
+    </motion.div>
   );
 };
 

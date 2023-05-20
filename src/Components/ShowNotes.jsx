@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { DeleteNOTE, EditNOTE } from "../Redux/Action";
+import { motion } from "framer-motion";
 
 import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
@@ -46,7 +47,7 @@ const ShowNotes = () => {
   };
 
   return (
-    <div className="min-h-screen p-2 lg:p-10">
+    <div className="min-h-screen bg-blue-gray-100 p-2 lg:p-10">
       {isNoteDeleted && <NoteDeleted />}
       {isNoteEdited && <NoteEdited />}
 
@@ -82,10 +83,13 @@ const ShowNotes = () => {
 
       <div className="flex flex-wrap">
         {allNotes.map((NOTE, index) => (
-          <Card
+          <motion.Card
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             shadow={true}
             key={index}
-            className="flex flex-row justify-between min-h-[200px] w-[90%] lg:w-[500px] p-5 m-5 drop-shadow-2xl rounded-md"
+            className="flex shadow-lg bg-white flex-row justify-between min-h-[200px] w-[90%] lg:w-[500px] p-5 m-5 drop-shadow-2xl rounded-md"
           >
             {editIndex === index ? (
               <div className="px-3">
@@ -122,7 +126,7 @@ const ShowNotes = () => {
               </div>
             ) : (
               <div>
-                <h1 className="text-2xl text-teal-400 font-semibold">
+                <h1 className="text-2xl text-gray-900 font-semibold">
                   {NOTE.title}
                 </h1>
                 <p className="text-md mt-2 overflow-x whitespace-pre-wrap break-words ">
@@ -139,7 +143,7 @@ const ShowNotes = () => {
                 <AiFillDelete className="text-2xl ml-4 my-4 hover:text-red-500" />
               </button>
             </div>
-          </Card>
+          </motion.Card>
         ))}
       </div>
     </div>
