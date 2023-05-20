@@ -7,7 +7,7 @@ import { DeleteNOTE, EditNOTE } from "../Redux/Action";
 import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { NoteDeleted, NoteEdited } from "./Message";
-import { Input, Textarea, Button } from "@material-tailwind/react";
+import { Input, Textarea, Button, Card } from "@material-tailwind/react";
 
 const ShowNotes = () => {
   const allNotes = useSelector((state) => state.notes);
@@ -60,7 +60,7 @@ const ShowNotes = () => {
           className=" my-3 group relative flex items-center gap-3 overflow-hidden pl-[72px] mx-3"
         >
           <span className="absolute left-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
-            <AiOutlineArrowLeft className="text-white" />
+            <AiOutlineArrowLeft className="text-black" />
           </span>
           Add Notes
         </Button>
@@ -82,38 +82,39 @@ const ShowNotes = () => {
 
       <div className="flex flex-wrap">
         {allNotes.map((NOTE, index) => (
-          <div
+          <Card
+            shadow={true}
             key={index}
-            className="flex justify-between min-h-[200px] w-[90%] lg:w-[500px] bg-black text-white p-5 m-5 drop-shadow-2xl rounded-md"
+            className="flex flex-row justify-between min-h-[200px] w-[90%] lg:w-[500px] p-5 m-5 drop-shadow-2xl rounded-md"
           >
             {editIndex === index ? (
               <div className="px-3">
-                <div className="flex flex-col w-72 gap-6 text-white">
+                <div className="flex flex-col w-72 gap-6 text-black">
                   <Input
                     variant="static"
                     value={editTitle}
                     onChange={(e) => setEditTitle(e.target.value)}
-                    className="focus:text-white text-white"
+                    className="focus:text-black text-black"
                   />
                 </div>
-                <div className="flex flex-col w-72 my-6 text-white">
+                <div className="flex flex-col w-72 my-6 text-black">
                   <Textarea
                     variant="static"
                     value={editDescription}
                     onChange={(e) => setEditDescription(e.target.value)}
-                    className="focus:text-white text-white"
+                    className="focus:text-black text-black"
                   />
                 </div>
                 <div className="flex justify-end mt-3">
                   <button
                     onClick={handleSave}
-                    className="bg-teal-400 text-white px-3 py-1 rounded-md hover:bg-teal-500 mr-2"
+                    className="bg-teal-400 text-black px-3 py-1 rounded-md hover:bg-teal-500 mr-2"
                   >
                     Save
                   </button>
                   <button
                     onClick={() => setEditIndex(null)}
-                    className="bg-gray-500 text-white px-3 py-1 rounded-md hover:bg-gray-600"
+                    className="bg-gray-500 text-black px-3 py-1 rounded-md hover:bg-gray-600"
                   >
                     Cancel
                   </button>
@@ -138,7 +139,7 @@ const ShowNotes = () => {
                 <AiFillDelete className="text-2xl ml-4 my-4 hover:text-red-500" />
               </button>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
