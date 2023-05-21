@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { DeleteNOTE, EditNOTE } from "../Redux/Action";
 import { motion } from "framer-motion";
-
 import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { NoteDeleted, NoteEdited } from "./Message";
-import { Input, Textarea, Button, Card } from "@material-tailwind/react";
+import {
+  Input,
+  Textarea,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Typography,
+  Dialog,
+} from "@material-tailwind/react";
+import { DeleteNOTE, EditNOTE } from "../Redux/Action";
 
 const ShowNotes = () => {
   const allNotes = useSelector((state) => state.notes);
@@ -19,6 +26,7 @@ const ShowNotes = () => {
   const [editDescription, setEditDescription] = useState("");
   const [isNoteDeleted, setIsNoteDeleted] = useState(false);
   const [isNoteEdited, setisNoteEdited] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleDelete = (index) => {
     dispatch(DeleteNOTE(index));
@@ -32,12 +40,12 @@ const ShowNotes = () => {
     setEditIndex(index);
     setEditTitle(allNotes[index].title);
     setEditDescription(allNotes[index].description);
+    setIsDialogOpen(true);
   };
 
   const handleSave = () => {
     dispatch(EditNOTE(editIndex, editTitle, editDescription));
     setEditIndex(null);
-
     setEditTitle("");
     setEditDescription("");
     setisNoteEdited(true);
@@ -54,11 +62,9 @@ const ShowNotes = () => {
       <div className="flex flex-col md:flex-row justify-center items-center">
         <Button
           onClick={() => navigate("/")}
-          buttonType="link"
-          size="lg"
           variant="gradient"
           color="light-blue"
-          className=" my-3 group relative flex items-center gap-3 overflow-hidden pl-[72px] mx-3"
+          className="my-3 group relative flex items-center gap-3 overflow-hidden pl-[72px] mx-3"
         >
           <span className="absolute left-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
             <AiOutlineArrowLeft className="text-black" />
@@ -68,11 +74,9 @@ const ShowNotes = () => {
 
         <Button
           onClick={() => navigate("/add")}
-          buttonType="link"
-          size="lg"
           variant="gradient"
           color="deep-orange"
-          className=" my-3 group relative flex items-center gap-3 overflow-hidden pr-[72px]"
+          className="my-3 group relative flex items-center gap-3 overflow-hidden pr-[72px]"
         >
           Total Notes
           <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
@@ -81,69 +85,74 @@ const ShowNotes = () => {
         </Button>
       </div>
 
-      <div className="flex flex-wrap">
-        {allNotes.map((NOTE, index) => (
-          <motion.Card
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {allNotes.map((note, index) => (
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            shadow={true}
+            className="flex justify-center items-center"
             key={index}
-            className="flex shadow-lg bg-white flex-row justify-between min-h-[200px] w-[90%] lg:w-[500px] p-5 m-5 drop-shadow-2xl rounded-md"
           >
-            {editIndex === index ? (
-              <div className="px-3">
-                <div className="flex flex-col w-72 gap-6 text-black">
-                  <Input
-                    variant="static"
-                    value={editTitle}
-                    onChange={(e) => setEditTitle(e.target.value)}
-                    className="focus:text-black text-black"
-                  />
+            <Card
+              shadow={true}
+              className="flex shadow-lg bg-white flex-row justify-between min-h-[200px] w-[90%] lg:w-[500px] p-5 m-5 drop-shadow-2xl rounded-md"
+            >
+              {editIndex === index ? (
+                <Dialog
+                  open={isDialogOpen}
+                  onClose={() => setIsDialogOpen(false)}
+                  className="bg-transparent shadow-none"
+                >
+                  <Card className="mx-auto w-full max-w-[30rem]">
+                    <div className="flex justify-center my-2">
+                      <Typography variant="h5">Edit Note</Typography>
+                    </div>
+                    <CardBody className="flex flex-col gap-4">
+                      <Input
+                        type="text"
+                        value={editTitle}
+                        onChange={(e) => setEditTitle(e.target.value)}
+                        label="Title"
+                      />
+                      <Textarea
+                        value={editDescription}
+                        onChange={(e) => setEditDescription(e.target.value)}
+                        label="Description"
+                        rows={10}
+                      />
+                    </CardBody>
+                    <CardFooter className="pt-0 flex justify-center gap-3">
+                      <Button color="red" onClick={() => setEditIndex(null)}>
+                        Cancel
+                      </Button>
+                      <Button color="green" onClick={handleSave}>
+                        Save
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </Dialog>
+              ) : (
+                <div>
+                  <h1 className="text-2xl text-gray-900 font-semibold">
+                    {note.title}
+                  </h1>
+                  <p className="text-md mt-2 overflow-x whitespace-pre-wrap break-words">
+                    {note.description}
+                  </p>
                 </div>
-                <div className="flex flex-col w-72 my-6 text-black">
-                  <Textarea
-                    variant="static"
-                    value={editDescription}
-                    onChange={(e) => setEditDescription(e.target.value)}
-                    className="focus:text-black text-black"
-                  />
-                </div>
-                <div className="flex justify-end mt-3">
-                  <button
-                    onClick={handleSave}
-                    className="bg-teal-400 text-black px-3 py-1 rounded-md hover:bg-teal-500 mr-2"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={() => setEditIndex(null)}
-                    className="bg-gray-500 text-black px-3 py-1 rounded-md hover:bg-gray-600"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div>
-                <h1 className="text-2xl text-gray-900 font-semibold">
-                  {NOTE.title}
-                </h1>
-                <p className="text-md mt-2 overflow-x whitespace-pre-wrap break-words ">
-                  {NOTE.description}
-                </p>
-              </div>
-            )}
+              )}
 
-            <div className="flex flex-col justify-center items-centr border-l border-slate-500">
-              <button onClick={() => handleEdit(index)} className="">
-                <FaEdit className="text-2xl ml-4 my-4 hover:text-teal-500" />
-              </button>
-              <button onClick={() => handleDelete(index)} className="">
-                <AiFillDelete className="text-2xl ml-4 my-4 hover:text-red-500" />
-              </button>
-            </div>
-          </motion.Card>
+              <div className="flex flex-col justify-center items-centr border-l border-slate-500">
+                <button onClick={() => handleEdit(index)}>
+                  <FaEdit className="text-2xl ml-4 my-4 hover:text-teal-500" />
+                </button>
+                <button onClick={() => handleDelete(index)}>
+                  <AiFillDelete className="text-2xl ml-4 my-4 hover:text-red-500" />
+                </button>
+              </div>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>

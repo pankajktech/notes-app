@@ -4,7 +4,12 @@ import { Alert } from "@material-tailwind/react";
 export const NoteAdded = () => {
   return (
     <div>
-      <Alert color="green">Note has been Added Successfully</Alert>
+      <Alert
+        color="green"
+        className="md:w-96 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
+      >
+        Note Added Successfully
+      </Alert>
     </div>
   );
 };
@@ -12,11 +17,23 @@ export const NoteAdded = () => {
 export const NoteDeleted = () => {
   return (
     <div>
-      <Alert color="red">Note has been Deleted Successfully</Alert>
+      <Alert
+        color="red"
+        className="md:w-96 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
+      >
+        Note Deleted Successfully
+      </Alert>
     </div>
   );
 };
 
 export const NoteEdited = () => {
-  return <Alert color="yellow">Note has been Edited Successfully</Alert>;
+  return (
+    <Alert
+      color="yellow"
+      className="md:w-96 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
+    >
+      Note Edited Successfully
+    </Alert>
+  );
 };

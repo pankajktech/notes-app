@@ -5,7 +5,7 @@ import ShowNotes from "./Components/ShowNotes";
 
 const App = () => {
   return (
-    <div className=" bg-cover bg-center bg-no-repeat">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NewNotes />} />
