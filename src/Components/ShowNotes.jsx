@@ -102,9 +102,9 @@ const ShowNotes = () => {
                 <Dialog
                   open={isDialogOpen}
                   onClose={() => setIsDialogOpen(false)}
-                  className="bg-transparent shadow-none"
+                  className="bg-transparent shadow-none flex justify-center items-center"
                 >
-                  <Card className="mx-auto w-full max-w-[30rem]">
+                  <Card className="mx-auto w-[95vh] md:w-[30rem]">
                     <div className="flex justify-center my-2">
                       <Typography variant="h5">Edit Note</Typography>
                     </div>

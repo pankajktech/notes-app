@@ -51,7 +51,7 @@ const NewNotes = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col justify-center items-center"
+        className="w-full flex flex-col justify-center items-center"
       >
         <Card className=" w-[90%] lg:w-[450px] bg-white drop-shadow-xl shadow-xl flex justify-center flex-col p-3  md:p-10 rounded-md">
           <h1 className="text-xl mb-5 text-center w-full">Add A Note</h1>
