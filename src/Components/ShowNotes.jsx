@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaEye } from "react-icons/fa";
 import { NoteDeleted, NoteEdited } from "./Message";
 import {
   Input,
@@ -16,6 +16,7 @@ import {
   Dialog,
 } from "@material-tailwind/react";
 import { DeleteNOTE, EditNOTE } from "../Redux/Action";
+import ReadNote from "./ReadNote";
 
 const ShowNotes = () => {
   const allNotes = useSelector((state) => state.notes);
@@ -27,6 +28,12 @@ const ShowNotes = () => {
   const [isNoteDeleted, setIsNoteDeleted] = useState(false);
   const [isNoteEdited, setisNoteEdited] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const [showReadNote, setShowReadNote] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowReadNote(true);
+  };
 
   const handleDelete = (index) => {
     dispatch(DeleteNOTE(index));
@@ -95,9 +102,37 @@ const ShowNotes = () => {
             key={index}
           >
             <Card
-              shadow={true}
-              className="flex shadow-lg bg-white flex-row justify-between min-h-[200px] w-[90%] lg:w-[500px] p-5 m-5 drop-shadow-2xl rounded-md"
+              shadow={false}
+              className="flex shadow-lg bg-white flex-row justify-between max-h-[500px] w-[90%] lg:w-[500px] p-5 rounded-md relative group overflow-hidden"
             >
+              <div className="absolute top-0 left-0 p-5 scale-x-0 group-hover:scale-100 transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-full rounded-lg flex items-center gap-4 justify-center">
+                <button
+                  onClick={handleButtonClick}
+                  className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
+                >
+                  <FaEye size={25} />
+                </button>
+                {showReadNote && (
+                  <ReadNote
+                    title={note.title}
+                    description={note.description}
+                    onClose={() => setShowReadNote(false)}
+                  />
+                )}
+                <Button
+                  onClick={() => handleEdit(index)}
+                  className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
+                >
+                  <FaEdit size={25} />
+                </Button>
+
+                <Button
+                  onClick={() => handleDelete(index)}
+                  className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
+                >
+                  <AiFillDelete size={25} />
+                </Button>
+              </div>
               {editIndex === index ? (
                 <Dialog
                   open={isDialogOpen}
@@ -142,15 +177,6 @@ const ShowNotes = () => {
                   </p>
                 </div>
               )}
-
-              <div className="flex flex-col justify-center items-centr border-l border-slate-500">
-                <button onClick={() => handleEdit(index)}>
-                  <FaEdit className="text-2xl ml-4 my-4 hover:text-teal-500" />
-                </button>
-                <button onClick={() => handleDelete(index)}>
-                  <AiFillDelete className="text-2xl ml-4 my-4 hover:text-red-500" />
-                </button>
-              </div>
             </Card>
           </motion.div>
         ))}
