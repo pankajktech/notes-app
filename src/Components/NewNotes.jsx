@@ -54,7 +54,7 @@ const NewNotes = () => {
         className="w-full flex flex-col justify-center items-center"
       >
         <Card className=" w-[90%] lg:w-[450px] bg-white drop-shadow-lg flex justify-center flex-col p-3  md:p-10 rounded-md">
-          <h1 className="text-xl mb-5 text-center w-full">Add A Note</h1>
+          <h1 className="text-xl mb-5 text-center w-full">Add Note</h1>
           <form onSubmit={AddNotes} className="flex flex-col">
             <div className="w-full my-5">
               <Input

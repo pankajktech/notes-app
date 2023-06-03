@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
-import { FaEdit, FaEye } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { NoteDeleted, NoteEdited } from "./Message";
 import {
   Input,
@@ -16,7 +16,6 @@ import {
   Dialog,
 } from "@material-tailwind/react";
 import { DeleteNOTE, EditNOTE } from "../Redux/Action";
-import ReadNote from "./ReadNote";
 
 const ShowNotes = () => {
   const allNotes = useSelector((state) => state.notes);
@@ -28,12 +27,6 @@ const ShowNotes = () => {
   const [isNoteDeleted, setIsNoteDeleted] = useState(false);
   const [isNoteEdited, setisNoteEdited] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const [showReadNote, setShowReadNote] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowReadNote(true);
-  };
 
   const handleDelete = (index) => {
     dispatch(DeleteNOTE(index));
@@ -53,8 +46,6 @@ const ShowNotes = () => {
   const handleSave = () => {
     dispatch(EditNOTE(editIndex, editTitle, editDescription));
     setEditIndex(null);
-    setEditTitle("");
-    setEditDescription("");
     setisNoteEdited(true);
     setTimeout(() => {
       setisNoteEdited(false);
@@ -92,7 +83,7 @@ const ShowNotes = () => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-5">
         {allNotes.map((note, index) => (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -103,36 +94,8 @@ const ShowNotes = () => {
           >
             <Card
               shadow={false}
-              className="flex shadow-lg bg-white flex-row justify-between max-h-[500px] w-[90%] lg:w-[500px] p-5 rounded-md relative group overflow-hidden"
+              className="flex shadow-lg bg-white flex-row justify-between min-h-[400px] w-[90%] lg:w-[500px] p-5 rounded-md relative group overflow-hidden"
             >
-              <div className="absolute top-0 left-0 p-5 scale-x-0 group-hover:scale-100 transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-full rounded-lg flex items-center gap-4 justify-center">
-                <button
-                  onClick={handleButtonClick}
-                  className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
-                >
-                  <FaEye size={25} />
-                </button>
-                {showReadNote && (
-                  <ReadNote
-                    title={note.title}
-                    description={note.description}
-                    onClose={() => setShowReadNote(false)}
-                  />
-                )}
-                <Button
-                  onClick={() => handleEdit(index)}
-                  className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
-                >
-                  <FaEdit size={25} />
-                </Button>
-
-                <Button
-                  onClick={() => handleDelete(index)}
-                  className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
-                >
-                  <AiFillDelete size={25} />
-                </Button>
-              </div>
               {editIndex === index ? (
                 <Dialog
                   open={isDialogOpen}
@@ -154,7 +117,7 @@ const ShowNotes = () => {
                         value={editDescription}
                         onChange={(e) => setEditDescription(e.target.value)}
                         label="Description"
-                        rows={10}
+                        rows={15}
                       />
                     </CardBody>
                     <CardFooter className="pt-0 flex justify-center gap-3">
@@ -177,6 +140,21 @@ const ShowNotes = () => {
                   </p>
                 </div>
               )}
+              <div className="absolute top-0 left-0 p-5 scale-x-0 group-hover:scale-100 transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-full rounded-lg flex items-center gap-4 justify-center">
+                <Button
+                  onClick={() => handleEdit(index)}
+                  className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
+                >
+                  <FaEdit size={25} />
+                </Button>
+
+                <Button
+                  onClick={() => handleDelete(index)}
+                  className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
+                >
+                  <AiFillDelete size={25} />
+                </Button>
+              </div>
             </Card>
           </motion.div>
         ))}
