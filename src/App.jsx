@@ -2,14 +2,16 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NewNotes from "./Components/NewNotes";
 import ShowNotes from "./Components/ShowNotes";
+import Header from "./Components/Header";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-blue-50">
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<NewNotes />} />
-          <Route path="/add" element={<ShowNotes />} />
+          <Route path="/notes" element={<ShowNotes />} />
         </Routes>
       </BrowserRouter>
     </div>

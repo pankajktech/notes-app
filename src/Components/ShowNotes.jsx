@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { AiOutlineArrowLeft, AiFillDelete } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { NoteDeleted, NoteEdited } from "./Message";
 import {
@@ -20,7 +19,6 @@ import { DeleteNOTE, EditNOTE } from "../Redux/Action";
 const ShowNotes = () => {
   const allNotes = useSelector((state) => state.notes);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [editIndex, setEditIndex] = useState(null);
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
@@ -53,35 +51,9 @@ const ShowNotes = () => {
   };
 
   return (
-    <div className="min-h-screen bg-blue-gray-100 p-2 lg:p-10">
+    <div className="min-h-[95vh] p-2 lg:p-10">
       {isNoteDeleted && <NoteDeleted />}
       {isNoteEdited && <NoteEdited />}
-
-      <div className="flex flex-col md:flex-row justify-center items-center">
-        <Button
-          onClick={() => navigate("/")}
-          variant="gradient"
-          color="light-blue"
-          className="my-3 group relative flex items-center gap-3 overflow-hidden pl-[72px] mx-3"
-        >
-          <span className="absolute left-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
-            <AiOutlineArrowLeft className="text-black" />
-          </span>
-          Add Notes
-        </Button>
-
-        <Button
-          onClick={() => navigate("/add")}
-          variant="gradient"
-          color="deep-orange"
-          className="my-3 group relative flex items-center gap-3 overflow-hidden pr-[72px]"
-        >
-          Total Notes
-          <span className="absolute right-0 grid h-full w-12 place-items-center bg-light-blue-600 transition-colors group-hover:bg-light-blue-700">
-            {allNotes.length}
-          </span>
-        </Button>
-      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-5">
         {allNotes.map((note, index) => (
@@ -94,7 +66,7 @@ const ShowNotes = () => {
           >
             <Card
               shadow={false}
-              className="flex shadow-lg bg-white flex-row justify-between min-h-[400px] w-[90%] lg:w-[500px] p-5 rounded-md relative group overflow-hidden"
+              className="flex bg-white flex-row justify-between min-h-[400px] w-[90%] lg:w-[500px] p-5 rounded-xl relative group overflow-hidden"
             >
               {editIndex === index ? (
                 <Dialog
