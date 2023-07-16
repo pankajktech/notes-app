@@ -51,7 +51,7 @@ const ShowNotes = () => {
   };
 
   return (
-    <div className="min-h-[95vh] p-2 lg:p-10">
+    <div className="p-2 lg:p-10">
       {isNoteDeleted && <NoteDeleted />}
       {isNoteEdited && <NoteEdited />}
 
@@ -112,7 +112,7 @@ const ShowNotes = () => {
                   </p>
                 </div>
               )}
-              <div className="absolute top-0 left-0 p-5 scale-x-0 group-hover:scale-100 transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-full rounded-lg flex items-center gap-4 justify-center">
+              <div className="absolute top-0 left-0 p-5 scale-x-0 group-hover:scale-100 transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-20 rounded-lg flex items-center gap-4 justify-center">
                 <Button
                   onClick={() => handleEdit(index)}
                   className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"

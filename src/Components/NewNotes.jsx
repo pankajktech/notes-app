@@ -4,7 +4,6 @@ import { AddNOTE } from "../Redux/Action";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { NoteAdded } from "./Message";
 import { Input, Textarea, Button, Card } from "@material-tailwind/react";
 
@@ -29,7 +28,7 @@ const NewNotes = () => {
     }, 1000);
 
     setTimeout(() => {
-      navigate("/add");
+      navigate("/notes");
     }, 1000);
   };
 

@@ -6,7 +6,7 @@ import Header from "./Components/Header";
 
 const App = () => {
   return (
-    <div className="bg-blue-50">
+    <div>
       <BrowserRouter>
         <Header />
         <Routes>

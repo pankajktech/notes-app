@@ -1,4 +1,4 @@
-import { Navbar, Typography, Button, Avatar } from "@material-tailwind/react";
+import { Navbar, Button, Avatar } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import NoteImg from "../Images/notes.png";
 

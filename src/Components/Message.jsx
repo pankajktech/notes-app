@@ -6,7 +6,7 @@ export const NoteAdded = () => {
     <div>
       <Alert
         color="green"
-        className="md:w-96 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
+        className="md:w-72 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
       >
         Note Added Successfully
       </Alert>
@@ -19,7 +19,7 @@ export const NoteDeleted = () => {
     <div>
       <Alert
         color="red"
-        className="md:w-96 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
+        className="md:w-72 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
       >
         Note Deleted Successfully
       </Alert>
@@ -31,7 +31,7 @@ export const NoteEdited = () => {
   return (
     <Alert
       color="yellow"
-      className="md:w-96 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
+      className="md:w-72 absolute top-5 left-2 md:left-auto md:top-10  md:right-10 z-10"
     >
       Note Edited Successfully
     </Alert>
