@@ -55,7 +55,7 @@ const ShowNotes = () => {
       {isNoteDeleted && <NoteDeleted />}
       {isNoteEdited && <NoteEdited />}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-5">
+      <div className="flex flex-wrap gap-5">
         {allNotes.map((note, index) => (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ const ShowNotes = () => {
           >
             <Card
               shadow={false}
-              className="flex bg-white flex-row justify-between min-h-[400px] w-[90%] lg:w-[500px] p-5 rounded-xl relative group overflow-hidden"
+              className="flex bg-white flex-row justify-between min-h-[200px] w-[90%] lg:min-w-[300px] rounded-xl relative group overflow-hidden"
             >
               {editIndex === index ? (
                 <Dialog
@@ -104,10 +104,10 @@ const ShowNotes = () => {
                 </Dialog>
               ) : (
                 <div>
-                  <h1 className="text-2xl text-gray-900 font-semibold">
+                  <h1 className="text-2xl bg-gray-900 p-5 text-center text-white font-semibold">
                     {note.title}
                   </h1>
-                  <p className="text-md mt-2 overflow-x whitespace-pre-wrap break-words">
+                  <p className="text-md text-black mt-2 overflow-x p-5 whitespace-pre-wrap break-words">
                     {note.description}
                   </p>
                 </div>
