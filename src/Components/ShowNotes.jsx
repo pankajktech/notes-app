@@ -51,7 +51,7 @@ const ShowNotes = () => {
   };
 
   return (
-    <div className="p-2 lg:p-10">
+    <div className="p-2 lg:p-10 ">
       {isNoteDeleted && <NoteDeleted />}
       {isNoteEdited && <NoteEdited />}
 
@@ -66,7 +66,7 @@ const ShowNotes = () => {
           >
             <Card
               shadow={false}
-              className="flex bg-white flex-row justify-between min-h-[300px] w-[90%] lg:w-[400px] rounded-xl relative group overflow-hidden"
+              className="flex flex-row justify-between min-h-[300px] w-[90%] lg:w-[400px] rounded-xl relative group overflow-hidden"
             >
               {editIndex === index ? (
                 <Dialog
@@ -104,7 +104,7 @@ const ShowNotes = () => {
                 </Dialog>
               ) : (
                 <div className="w-full">
-                  <h1 className="text-2xl bg-blue-100 p-3 text-center text-black font-semibold">
+                  <h1 className="text-2xl p-3 text-center text-black font-semibold">
                     {note.title}
                   </h1>
                   <p className="text-md text-black mt-2 overflow-x p-5 whitespace-pre-wrap break-words">
