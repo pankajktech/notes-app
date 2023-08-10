@@ -50,6 +50,16 @@ const ShowNotes = () => {
     }, 1000);
   };
 
+  if (allNotes.length === 0) {
+    return (
+      <div className="min-h-[90vh] flex justify-center items-center">
+        <h1 className="text-3xl bg-white p-5 font-bold rounded-md">
+          No Notes Found
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <div className="p-2 lg:p-10 ">
       {isNoteDeleted && <NoteDeleted />}
