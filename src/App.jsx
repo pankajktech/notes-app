@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NewNotes from "./Components/NewNotes";
 import ShowNotes from "./Components/ShowNotes";
 import Header from "./Components/Header";
-import BgImg from "../src/Images/flower.webp";
+import BgImg from "../src/Images/bg.webp";
 
 const App = () => {
   return (
