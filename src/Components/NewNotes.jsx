@@ -49,7 +49,7 @@ const NewNotes = () => {
           </div>
           <div className="w-full my-5">
             <Textarea
-              label="Enter Something....s"
+              label="Enter Something...."
               type="text"
               variant="standard"
               value={description}
