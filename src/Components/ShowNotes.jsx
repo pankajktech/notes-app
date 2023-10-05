@@ -76,7 +76,7 @@ const ShowNotes = () => {
           >
             <Card
               shadow={false}
-              className="flex flex-row justify-between min-h-[300px] w-[90%] lg:w-[400px] rounded-xl relative group overflow-hidden"
+              className="flex flex-wrap justify-between min-h-[300px] min-w-[95vw] lg:min-w-[400px] rounded-xl relative group overflow-hidden"
             >
               {editIndex === index ? (
                 <Dialog
