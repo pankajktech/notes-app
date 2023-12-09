@@ -1,13 +1,12 @@
-import { Navbar, Button, Avatar } from "@material-tailwind/react";
+import { Navbar, Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import NoteImg from "../Images/notes.png";
 
 const Header = () => {
   return (
     <Navbar className="mx-auto bg-white max-w-screen-xl p-2 lg:rounded-full">
       <div className="relative flex justify-around items-center text-blue-gray-900">
         <Link to={"/"}>
-          <Avatar variant="square" src={NoteImg} />
+          <h1 className="font-bold text-xl drop-shadow-lg">Notes</h1>
         </Link>
         <div className="">
           <Link to={"/"}>

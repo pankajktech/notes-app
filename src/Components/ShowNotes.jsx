@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { motion } from "framer-motion";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { NoteDeleted, NoteEdited } from "./Message";
@@ -67,16 +66,10 @@ const ShowNotes = () => {
 
       <div className="flex flex-wrap gap-5">
         {allNotes.map((note, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex justify-center items-center"
-            key={index}
-          >
-            <Card
+          <div className="flex justify-center items-center" key={index}>
+            <div
               shadow={false}
-              className="flex flex-wrap justify-between min-h-[300px] min-w-[95vw] lg:min-w-[400px] rounded-xl relative group overflow-hidden"
+              className="flex bg-white flex-wrap justify-between  min-w-[95vw] lg:min-w-[200px] relative group overflow-hidden"
             >
               {editIndex === index ? (
                 <Dialog
@@ -84,7 +77,7 @@ const ShowNotes = () => {
                   onClose={() => setIsDialogOpen(false)}
                   className="bg-transparent shadow-none flex justify-center items-center"
                 >
-                  <Card className="mx-auto w-[95vh] md:w-[30rem]">
+                  <Card className="mx-auto rounded-none w-[95vh] md:w-[30rem]">
                     <div className="flex justify-center my-2">
                       <Typography variant="h5">Edit Note</Typography>
                     </div>
@@ -113,16 +106,16 @@ const ShowNotes = () => {
                   </Card>
                 </Dialog>
               ) : (
-                <div className="w-full">
-                  <h1 className="text-2xl p-3 text-center text-black font-semibold">
+                <div className="w-full p-5">
+                  <h1 className="text-2xl text-center text-black font-semibold">
                     {note.title}
                   </h1>
-                  <p className="text-md text-black mt-2 overflow-x p-5 whitespace-pre-wrap break-words">
+                  <p className="text-md text-black mt-2 overflow-x whitespace-pre-wrap break-words">
                     {note.description}
                   </p>
                 </div>
               )}
-              <div className="absolute top-0 left-0 p-5 scale-x-0 group-hover:scale-100 transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-20 rounded-lg flex items-center gap-4 justify-center">
+              <div className="absolute top-0 left-0 p-5 scale-x-0 group-hover:scale-100 transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-full flex items-center gap-4 justify-center">
                 <Button
                   onClick={() => handleEdit(index)}
                   className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
@@ -137,8 +130,8 @@ const ShowNotes = () => {
                   <AiFillDelete size={25} />
                 </Button>
               </div>
-            </Card>
-          </motion.div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
